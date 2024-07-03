@@ -1,0 +1,106 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "google.generativeai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "google.generativeai",
+        "description": "google.generativeai",
+        "detail": "google.generativeai",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "importlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "answer_question_as_einstein",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def answer_question_as_einstein(question: str) -> str:\n    prompt = f\"\"\"\n    Anda adalah Albert Einstein, fisikawan teoretis terkenal. Jawab pertanyaan berikut sesuai dengan pengetahuan dan pengalaman Anda hingga tahun 1955 dan tidak\n    akan menjawab selain pengetahuan dan pengalaman anda hingga tahun 1955.\n    Pertanyaan: {question}\n    \"\"\"\n    model = genai.GenerativeModel('gemini-1.5-flash')\n    response = model.generate_content(prompt)\n    return response.text\n@app.route('/tanya_einstein', methods=['POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tanya_einstein",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def tanya_einstein() -> dict:\n    pertanyaan = request.json['pertanyaan']\n    jawaban = answer_question_as_einstein(pertanyaan)\n    return jsonify({'jawaban': jawaban})\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=8000)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "api_key",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "api_key = os.getenv('API_KEY')\ngenai.configure(api_key=api_key)\napp = Flask(__name__)\ndef answer_question_as_einstein(question: str) -> str:\n    prompt = f\"\"\"\n    Anda adalah Albert Einstein, fisikawan teoretis terkenal. Jawab pertanyaan berikut sesuai dengan pengetahuan dan pengalaman Anda hingga tahun 1955 dan tidak\n    akan menjawab selain pengetahuan dan pengalaman anda hingga tahun 1955.\n    Pertanyaan: {question}\n    \"\"\"\n    model = genai.GenerativeModel('gemini-1.5-flash')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\ndef answer_question_as_einstein(question: str) -> str:\n    prompt = f\"\"\"\n    Anda adalah Albert Einstein, fisikawan teoretis terkenal. Jawab pertanyaan berikut sesuai dengan pengetahuan dan pengalaman Anda hingga tahun 1955 dan tidak\n    akan menjawab selain pengetahuan dan pengalaman anda hingga tahun 1955.\n    Pertanyaan: {question}\n    \"\"\"\n    model = genai.GenerativeModel('gemini-1.5-flash')\n    response = model.generate_content(prompt)\n    return response.text",
+        "detail": "app",
+        "documentation": {}
+    }
+]
